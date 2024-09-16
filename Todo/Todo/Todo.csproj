@@ -69,8 +69,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Model\Database\" />
-      <Folder Include="Model\DTOs\" />
+      <Folder Include="Model\" />
     </ItemGroup>
 
 </Project>
