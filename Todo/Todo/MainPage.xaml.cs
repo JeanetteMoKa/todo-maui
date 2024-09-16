@@ -1,11 +1,14 @@
-﻿namespace Todo;
+﻿using Todo.ViewModel;
+
+namespace Todo;
 
 public partial class MainPage : ContentPage
 {
 
-    public MainPage()
+    public MainPage(MainViewModel vm)
     {
         InitializeComponent();
+        BindingContext = vm;
     }
 
 }
