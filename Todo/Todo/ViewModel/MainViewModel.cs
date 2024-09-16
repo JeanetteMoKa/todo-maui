@@ -1,23 +1,30 @@
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
+using System.Net.Mime;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Todo.ViewModel;
 
-public class MainViewModel : INotifyPropertyChanged
+public partial class MainViewModel : ObservableObject
 {
-    private string text;
-
-    public string Text
+    public MainViewModel()
     {
-        get => text;
-        set
-        {
-            text = value;
-            OnPropertyChanged(nameof(Text));
-        }
+        Items = new ObservableCollection<string>();
     }
     
-    public event PropertyChangedEventHandler PropertyChanged;
-    void OnPropertyChanged(string propertyName) =>
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    [ObservableProperty]
+    ObservableCollection<string> items;
+    
+    [ObservableProperty]
+    string text;
+
+    [RelayCommand]
+    void Add()
+    {
+        if (string.IsNullOrWhiteSpace(Text))
+            return;
+            
+        Items.Add(Text);
+        Text = string.Empty;
+    }
 }
