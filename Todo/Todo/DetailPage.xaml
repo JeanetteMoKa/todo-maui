@@ -2,8 +2,16 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Todo.ViewModel"
+             x:DataType="viewmodel:DetailViewModel"
              x:Class="Todo.DetailPage">
-    <ContentPage.Content>
+    <StackLayout Padding="20">
+        <Label Text="{Binding Text}"
+               FontSize="24"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"/>
         
-    </ContentPage.Content>
+        <Button Text="Go Back"
+                Command="{Binding GoBackCommand}"/>
+    </StackLayout>
 </ContentPage>
